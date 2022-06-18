@@ -1,4 +1,3 @@
-import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, StatusBar } from 'react-native';
@@ -7,17 +6,10 @@ import { useTheme } from 'styled-components';
 
 import Logo from '../../assets/logo.svg';
 import { Car } from '../../components/Car';
-import { Loading } from '../../components/Loading';
+import { LoadAnimation } from '../../components/LoadAnimation';
 import { CarDTO } from '../../dtos/CarDTO';
 import api from '../../services/api';
-import {
-  CarList,
-  Container,
-  Header,
-  HeaderContent,
-  MyCarsButton,
-  TotalCars,
-} from './styles';
+import { CarList, Container, Header, HeaderContent, TotalCars } from './styles';
 
 export function Home() {
   const [cars, setCars] = useState<CarDTO[]>([] as CarDTO[]);
@@ -29,10 +21,6 @@ export function Home() {
 
   function handleCarDetails(car: CarDTO) {
     navigation.navigate('CarDetails', { car });
-  }
-
-  function handleMyCars() {
-    navigation.navigate('MyCars');
   }
 
   useEffect(() => {
@@ -72,7 +60,7 @@ export function Home() {
       </Header>
 
       {loading ? (
-        <Loading />
+        <LoadAnimation />
       ) : (
         <CarList
           data={cars}
@@ -83,9 +71,29 @@ export function Home() {
         />
       )}
 
-      <MyCarsButton onPress={handleMyCars}>
-        <Ionicons name="ios-car-sport" size={32} color={theme.colors.shape} />
-      </MyCarsButton>
+      {/* <PanGestureHandler onGestureEvent={onGestureEvent}>
+        <Animated.View
+          style={[
+            {
+              position: 'absolute',
+              bottom: 22,
+              right: 22,
+            },
+            myCarsButtonStyle,
+          ]}
+        >
+          <ButtonAnimated
+            style={[styles.button, { backgroundColor: theme.colors.main }]}
+            onPress={handleMyCars}
+          >
+            <Ionicons
+              name="ios-car-sport"
+              size={32}
+              color={theme.colors.shape}
+            />
+          </ButtonAnimated>
+        </Animated.View>
+      </PanGestureHandler> */}
     </Container>
   );
 }

@@ -17,12 +17,14 @@ export const Header = styled.View`
   align-items: center;
 
   position: absolute;
-  margin-top: ${getStatusBarHeight() + 12}px;
+  z-index: 10;
+
+  margin-top: ${getStatusBarHeight() + 24}px;
   margin-left: 24px;
 `;
 
 export const CarImages = styled.View`
-  margin-top: ${getStatusBarHeight() + 12}px;
+  margin-top: ${getStatusBarHeight() + 24}px;
 `;
 
 export const Content = styled(ScrollView).attrs({

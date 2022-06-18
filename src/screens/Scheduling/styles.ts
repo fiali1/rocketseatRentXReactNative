@@ -19,8 +19,8 @@ export const Header = styled.View`
 
   justify-content: center;
 
-  padding: 20px 25px;
-  padding-top: ${getStatusBarHeight() + 32}px;
+  padding: 0px 25px;
+  padding-top: ${getStatusBarHeight() + 24}px;
 `;
 
 export const Title = styled.Text`
@@ -68,7 +68,7 @@ export const DateValue = styled.Text<DateValueProps>`
 
 export const Content = styled.ScrollView.attrs({
   contentContainerStyle: {
-    paddingVertical: 24,
+    paddingVertical: 8,
   },
   showsVerticalScrollIndicator: false,
 })``;

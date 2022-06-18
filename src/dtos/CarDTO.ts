@@ -1,4 +1,10 @@
+export interface Photos {
+  id: string;
+  photo: string;
+}
+
 interface Accessories {
+  id: string;
   name: string;
   type: string;
 }
@@ -10,10 +16,8 @@ export interface CarDTO {
   fuel_type: string;
   id: string;
   name: string;
-  photos: string[];
-  rent: {
-    period: string;
-    price: string;
-  };
+  photos: Photos[];
+  period: string;
+  price: string;
   thumbnail: string;
 }

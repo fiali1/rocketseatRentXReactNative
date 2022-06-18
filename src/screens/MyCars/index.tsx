@@ -5,7 +5,7 @@ import { ActivityIndicator, StatusBar } from 'react-native';
 
 import { BackButton } from '../../components/BackButton';
 import { Car } from '../../components/Car';
-import { Loading } from '../../components/Loading';
+import { LoadAnimation } from '../../components/LoadAnimation';
 import { CarDTO } from '../../dtos/CarDTO';
 import api from '../../services/api';
 import theme from '../../styles/theme';
@@ -90,7 +90,7 @@ export function MyCars() {
         </Appointments>
 
         {loading ? (
-          <Loading />
+          <LoadAnimation />
         ) : (
           <CarList
             data={cars}

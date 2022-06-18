@@ -64,7 +64,7 @@ export function SchedulingDetails() {
 
   const navigation = useNavigation();
 
-  const rentTotal = dates.length * Number(car.rent.price);
+  const rentTotal = dates.length * Number(car.price);
 
   function handleScheduling() {
     navigation.goBack();
@@ -92,7 +92,13 @@ export function SchedulingDetails() {
           id: car.id,
           unavailable_dates,
         })
-        .then(() => navigation.navigate('SchedulingComplete'));
+        .then(() => {
+          navigation.navigate('Confirmation', {
+            title: 'Carro alugado!',
+            message: `Agore você só precisa ir\n até uma concessionária da RENTX\n pegar o seu automóvel`,
+            nextScreen: 'Home',
+          });
+        });
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -134,8 +140,8 @@ export function SchedulingDetails() {
           </Description>
 
           <Rent>
-            <Period>{car.rent.period}</Period>
-            <Price>R$ {car.rent.price}</Price>
+            <Period>{car.period}</Period>
+            <Price>R$ {car.price}</Price>
           </Rent>
         </Details>
 
@@ -179,7 +185,7 @@ export function SchedulingDetails() {
           <RentalPriceLabel>TOTAL</RentalPriceLabel>
           <RentalPriceDetails>
             <RentalPriceQuota>
-              {`R$ ${car.rent.price} x${dates.length} diárias`}
+              {`R$ ${car.price} x${dates.length} diárias`}
             </RentalPriceQuota>
             <RentalPriceTotal>R$ {rentTotal}</RentalPriceTotal>
           </RentalPriceDetails>
